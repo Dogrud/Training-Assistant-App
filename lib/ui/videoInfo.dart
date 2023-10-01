@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class videoInfo extends StatelessWidget {
   const videoInfo({Key? key}) : super(key: key);
@@ -25,10 +26,13 @@ class videoInfo extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.arrow_back_ios,
-                        size: 20,
-                        color: Colors.white70,
+                      InkWell(
+                        onTap: ((){Get.back();}),
+                        child: Icon(
+                          Icons.arrow_back_ios,
+                          size: 20,
+                          color: Colors.white70,
+                        ),
                       ),
                       Expanded(child: Container()),
                       Icon(
@@ -148,7 +152,8 @@ class videoInfo extends StatelessWidget {
                   ),
                   Expanded(child: Container()),
                   Row(
-                    children: [Icon(Icons.loop,size: size.width*0.08,color: Colors.blue,),
+                    children: [
+                      Icon(Icons.loop,size: size.width*0.08,color: Colors.blue,),
                       SizedBox(width: size.width*0.01,),
                       Text("3 sets",style: TextStyle(
                         fontSize: size.width*0.04,

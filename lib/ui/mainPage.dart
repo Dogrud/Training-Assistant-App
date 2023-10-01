@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:trainign_assistant_app/ui/videoInfo.dart';
 
 class mainPage extends StatefulWidget {
   const mainPage({Key? key}) : super(key: key);
@@ -85,10 +87,13 @@ class _GetStartedState extends State<mainPage> {
                     color: Colors.black54),
               ),
               Expanded(child: Container()),
-              Text(
-                "Details",
-                style: TextStyle(
-                    fontSize: size.height * 0.025, color: Colors.blue),
+              InkWell(
+                onTap: ((){Get.to(videoInfo());}),
+                child: Text(
+                  "Details",
+                  style: TextStyle(
+                      fontSize: size.height * 0.025, color: Colors.blue),
+                ),
               ),
               SizedBox(
                 width: size.width * 0.01,
