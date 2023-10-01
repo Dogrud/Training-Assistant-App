@@ -299,47 +299,96 @@ class _GetStartedState extends State<mainPage> {
               )
             ],
           ),
-          Expanded(child: ListView.builder(
-              itemCount: (info.length.toDouble()/2).toInt(),
-              itemBuilder:(_,i){
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [Container(
-                    padding: EdgeInsets.only(top: size.height*0.012),
-                    height: size.height*0.2,
-                    width: size.width*0.48,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          opacity: 0.7,
-                          image: AssetImage(
-                            info[i]["img"],
-                          ),
+          Expanded(child: OverflowBox(
+            maxWidth: size.width,
+            child: MediaQuery.removePadding(
+              context: context,
+              removeTop: true,
+              child: ListView.builder(
+                  itemCount: (info.length.toDouble()/2).toInt(),
+                  itemBuilder:(_,i){
+                    int a = 2*i;
+                    int b = 2*i +1;
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(top: size.height*0.012),
+                          margin: EdgeInsets.only(left: 30,bottom: 15,top: 15),
+                          height: size.height*0.18,
+                          width: (size.width-90)/2,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                              opacity: 0.7,
+                              image: AssetImage(
+                                info[a]["img"]
+                                //"assets/images/calf.png"
+                              ),
 
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 4,
+                                  offset: Offset(-5, -5),
+                                  color: Colors.blueAccent.withOpacity(0.1)
+                              )
+                            ]
                         ),
-                        boxShadow: [
-                          BoxShadow(
-                              blurRadius: 3,
-                              offset: Offset(5, 5),
-                              color: Colors.blueAccent.withOpacity(0.1)
-                          )
-                        ]
-                    ),
-                    child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Text(
-                        info[i]["title"],
-                        style: TextStyle(
-                            fontSize: size.width*0.04,
-                            color: Colors.blueAccent
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Text(
+                            info[a]["title"],
+                            style: TextStyle(
+                                fontSize: size.width*0.04,
+                                color: Colors.blueAccent
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  )],
+                        Container(
+                          padding: EdgeInsets.only(top: size.height*0.012),
+                          height: size.height*0.18,
+                          margin: EdgeInsets.only(left: 30,bottom: 15,top: 15),
+                          width: (size.width-90)/2,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                opacity: 0.7,
+                                image: AssetImage(
+                                    info[b]["img"]
+                                  //"assets/images/calf.png"
+                                ),
 
-                );
-              }
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 4,
+                                    offset: Offset(-5, -5),
+                                    color: Colors.blueAccent.withOpacity(0.1)
+                                )
+                              ]
+                          ),
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              info[b]["title"],
+                              style: TextStyle(
+                                  fontSize: size.width*0.04,
+                                  color: Colors.blueAccent
+                              ),
+                            ),
+                          ),
+                        )
+
+                      ],
+
+                    );
+                  }
+              ),
+            ),
           ))
 
         ]),
