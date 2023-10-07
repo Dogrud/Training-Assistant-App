@@ -6,7 +6,6 @@ import 'package:trainign_assistant_app/ui/videoInfo.dart';
 
 class mainPage extends StatefulWidget {
   const mainPage({Key? key}) : super(key: key);
-
   @override
   State<mainPage> createState() => _GetStartedState();
 }
@@ -15,7 +14,9 @@ class _GetStartedState extends State<mainPage> {
   List info = [];
   _initData(){
     DefaultAssetBundle.of(context).loadString("json/info.json").then((value) {
-      info = json.decode(value);
+      setState(() {
+        info = json.decode(value);
+      });
     });
   }
 
@@ -29,12 +30,11 @@ class _GetStartedState extends State<mainPage> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
         padding: EdgeInsets.only(
-            top: size.height * 0.08,
+            top: size.height * 0.04,
             left: size.height * 0.03,
             right: size.height * 0.03),
         width: size.width,
@@ -88,7 +88,7 @@ class _GetStartedState extends State<mainPage> {
               ),
               Expanded(child: Container()),
               InkWell(
-                onTap: ((){Get.to(videoInfo());}),
+                onTap: ((){Get.to(() => videoInfo());}),
                 child: Text(
                   "Details",
                   style: TextStyle(
