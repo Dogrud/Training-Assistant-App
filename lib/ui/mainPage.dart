@@ -12,7 +12,7 @@ class mainPage extends StatefulWidget {
 
 class _GetStartedState extends State<mainPage> {
   List info = [];
-  _initData() {
+  _initData(){
     DefaultAssetBundle.of(context).loadString("json/info.json").then((value) {
       setState(() {
         info = json.decode(value);
@@ -20,8 +20,9 @@ class _GetStartedState extends State<mainPage> {
     });
   }
 
+
   @override
-  void initState() {
+  void initState(){
     super.initState();
     _initData();
   }
@@ -87,9 +88,7 @@ class _GetStartedState extends State<mainPage> {
               ),
               Expanded(child: Container()),
               InkWell(
-                onTap: (() {
-                  Get.to(() => videoInfo());
-                }),
+                onTap: ((){Get.to(() => videoInfo());}),
                 child: Text(
                   "Details",
                   style: TextStyle(
@@ -194,7 +193,7 @@ class _GetStartedState extends State<mainPage> {
                       Container(
                           decoration: BoxDecoration(
                               borderRadius:
-                                  BorderRadius.circular(size.width * 0.15),
+                              BorderRadius.circular(size.width * 0.15),
                               boxShadow: [
                                 BoxShadow(
                                     color: Colors.deepPurpleAccent,
@@ -294,112 +293,109 @@ class _GetStartedState extends State<mainPage> {
               ],
             ),
           ),
-          SizedBox(
-            height: size.height * 0.02,
-          ),
+          SizedBox(height: size.height*0.02,),
           Row(
             children: [
               Text(
                 "Area of focus",
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                    fontSize: size.width * 0.07,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black54),
+                style:
+                TextStyle(fontSize: size.width*0.07,fontWeight: FontWeight.w500, color: Colors.black54),
               )
             ],
           ),
-          Expanded(
-              child: OverflowBox(
+          Expanded(child: OverflowBox(
             maxWidth: size.width,
             child: MediaQuery.removePadding(
               context: context,
               removeTop: true,
               child: ListView.builder(
-                  itemCount: (info.length.toDouble() / 2).toInt(),
-                  itemBuilder: (_, i) {
-                    int a = 2 * i;
-                    int b = 2 * i + 1;
+                  itemCount: (info.length.toDouble()/2).toInt(),
+                  itemBuilder:(_,i){
+                    int a = 2*i;
+                    int b = 2*i +1;
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Container(
-                            padding: EdgeInsets.only(top: size.height * 0.012),
-                            margin:
-                                EdgeInsets.only(left: 30, bottom: 15, top: 15),
-                            height: size.height * 0.18,
-                            width: (size.width - 90) / 2,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 4,
-                                      offset: Offset(-5, -5),
-                                      color: Colors.blueAccent.withOpacity(0.1))
-                                ]),
-                            child: Column(
-                              children: [
-                                Container(
-                                    width: ((size.width - 150) / 2),
-                                    height: size.height * 0.13,
-                                    child: Image(
-                                        image:
-                                            Image.asset(info[a]["img"]).image,
-                                        alignment: Alignment.center,
-                                        fit: BoxFit.fill)),
-                                Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Text(
-                                    info[a]["title"],
-                                    style: TextStyle(
-                                        fontSize: size.width * 0.04,
-                                        color: Colors.blueAccent),
-                                  ),
-                                ),
-                              ],
-                            )),
+                          padding: EdgeInsets.only(top: size.height*0.012),
+                          margin: EdgeInsets.only(left: 30,bottom: 15,top: 15),
+                          height: size.height*0.18,
+                          width: (size.width-90)/2,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(15),
+                            image: DecorationImage(
+                              opacity: 0.7,
+                              image: AssetImage(
+                                info[a]["img"]
+                                //"assets/images/calf.png"
+                              ),
+
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                  blurRadius: 4,
+                                  offset: Offset(-5, -5),
+                                  color: Colors.blueAccent.withOpacity(0.1)
+                              )
+                            ]
+                        ),
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Text(
+                            info[a]["title"],
+                            style: TextStyle(
+                                fontSize: size.width*0.04,
+                                color: Colors.blueAccent
+                            ),
+                          ),
+                        ),
+                      ),
                         Container(
-                            padding: EdgeInsets.only(top: size.height * 0.012),
-                            margin:
-                                EdgeInsets.only(left: 30, bottom: 15, top: 15),
-                            height: size.height * 0.18,
-                            width: (size.width - 90) / 2,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 4,
-                                      offset: Offset(-5, -5),
-                                      color: Colors.blueAccent.withOpacity(0.1))
-                                ]),
-                            child: Column(
-                              children: [
-                                Container(
-                                    width: ((size.width - 150) / 2),
-                                    height: size.height * 0.13,
-                                    child: Image(
-                                        image:
-                                            Image.asset(info[b]["img"]).image,
-                                        alignment: Alignment.center,
-                                        fit: BoxFit.fill)),
-                                Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Text(
-                                    info[b]["title"],
-                                    style: TextStyle(
-                                        fontSize: size.width * 0.04,
-                                        color: Colors.blueAccent),
-                                  ),
+                          padding: EdgeInsets.only(top: size.height*0.012),
+                          height: size.height*0.18,
+                          margin: EdgeInsets.only(left: 30,bottom: 15,top: 15),
+                          width: (size.width-90)/2,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                              image: DecorationImage(
+                                opacity: 0.7,
+                                image: AssetImage(
+                                    info[b]["img"]
+                                  //"assets/images/calf.png"
                                 ),
-                              ],
-                            ))
+
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 4,
+                                    offset: Offset(-5, -5),
+                                    color: Colors.blueAccent.withOpacity(0.1)
+                                )
+                              ]
+                          ),
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              info[b]["title"],
+                              style: TextStyle(
+                                  fontSize: size.width*0.04,
+                                  color: Colors.blueAccent
+                              ),
+                            ),
+                          ),
+                        )
+
                       ],
+
                     );
-                  }),
+                  }
+              ),
             ),
           ))
+
         ]),
       ),
     );
